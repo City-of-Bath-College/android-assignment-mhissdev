@@ -14,7 +14,7 @@
 
     <!-- Top banner -->
     <ImageView
-        android:id="@+id/top-banner"
+        android:id="@+id/top_banner"
         android:src="@drawable/background"
         android:scaleType="fitXY"
         android:layout_width="match_parent"
@@ -50,83 +50,83 @@
 
         <!-- Email -->
         <ImageView
-            android:id="@+id/icon-email"
+            android:id="@+id/icon_email"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_below="@+id/title"
             android:src="@drawable/img_05"/>
 
         <TextView
-            android:id="@+id/text-email"
+            android:id="@+id/text_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@id/icon-email"
-            android:layout_alignBottom="@id/icon-email"
+            android:layout_alignTop="@id/icon_email"
+            android:layout_alignBottom="@id/icon_email"
             android:gravity="center_vertical"
-            android:layout_toRightOf="@+id/icon-email"
+            android:layout_toRightOf="@+id/icon_email"
             android:layout_marginLeft="20dp"
             android:textSize="18sp"
             android:text="mark@somecompany.com"/>
 
         <!-- site -->
         <ImageView
-            android:id="@+id/icon-site"
+            android:id="@+id/icon_site"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_below="@+id/icon-email"
+            android:layout_below="@+id/icon_email"
             android:layout_marginTop="20dp"
             android:src="@drawable/img_03"/>
 
         <TextView
-            android:id="@+id/text-site"
+            android:id="@+id/text_site"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@id/icon-site"
-            android:layout_alignBottom="@id/icon-site"
+            android:layout_alignTop="@id/icon_site"
+            android:layout_alignBottom="@id/icon_site"
             android:gravity="center_vertical"
-            android:layout_toRightOf="@+id/icon-site"
+            android:layout_toRightOf="@+id/icon_site"
             android:layout_marginLeft="20dp"
             android:textSize="18sp"
             android:text="http://somesite.com"/>
 
         <!-- Some info -->
         <ImageView
-            android:id="@+id/icon-info"
+            android:id="@+id/icon_info"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_below="@+id/icon-site"
+            android:layout_below="@+id/icon_site"
             android:layout_marginTop="20dp"
             android:src="@drawable/img_04"/>
 
         <TextView
-            android:id="@+id/text-info"
+            android:id="@+id/text_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@id/icon-info"
-            android:layout_alignBottom="@id/icon-info"
+            android:layout_alignTop="@id/icon_info"
+            android:layout_alignBottom="@id/icon_info"
             android:gravity="center_vertical"
-            android:layout_toRightOf="@+id/icon-info"
+            android:layout_toRightOf="@+id/icon_info"
             android:layout_marginLeft="20dp"
             android:textSize="18sp"
             android:text="mhiscock"/>
 
         <!-- Location -->
         <ImageView
-            android:id="@+id/icon-location"
+            android:id="@+id/icon_location"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_below="@+id/icon-info"
+            android:layout_below="@+id/icon_info"
             android:layout_marginTop="20dp"
             android:src="@drawable/img_01"/>
 
         <TextView
-            android:id="@+id/text-location"
+            android:id="@+id/text_location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@id/icon-location"
-            android:layout_alignBottom="@id/icon-location"
+            android:layout_alignTop="@id/icon_location"
+            android:layout_alignBottom="@id/icon_location"
             android:gravity="center_vertical"
-            android:layout_toRightOf="@+id/icon-location"
+            android:layout_toRightOf="@+id/icon_location"
             android:layout_marginLeft="20dp"
             android:textSize="18sp"
             android:text="Devizes, Wiltshire, UK."/>
