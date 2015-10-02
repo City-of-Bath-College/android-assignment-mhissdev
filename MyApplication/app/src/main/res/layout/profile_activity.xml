@@ -60,10 +60,11 @@
             android:id="@+id/text-email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:layout_marginLeft="10dp"
+            android:layout_alignTop="@id/icon-email"
+            android:layout_alignBottom="@id/icon-email"
+            android:gravity="center_vertical"
             android:layout_toRightOf="@+id/icon-email"
-            android:layout_below="@+id/title"
+            android:layout_marginLeft="20dp"
             android:textSize="18sp"
             android:text="mark@somecompany.com"/>
 
@@ -80,10 +81,11 @@
             android:id="@+id/text-site"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="34dp"
-            android:layout_marginLeft="10dp"
+            android:layout_alignTop="@id/icon-site"
+            android:layout_alignBottom="@id/icon-site"
+            android:gravity="center_vertical"
             android:layout_toRightOf="@+id/icon-site"
-            android:layout_below="@+id/icon-email"
+            android:layout_marginLeft="20dp"
             android:textSize="18sp"
             android:text="http://somesite.com"/>
 
@@ -100,10 +102,11 @@
             android:id="@+id/text-info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="34dp"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/icon-site"
-            android:layout_below="@+id/icon-site"
+            android:layout_alignTop="@id/icon-info"
+            android:layout_alignBottom="@id/icon-info"
+            android:gravity="center_vertical"
+            android:layout_toRightOf="@+id/icon-info"
+            android:layout_marginLeft="20dp"
             android:textSize="18sp"
             android:text="mhiscock"/>
 
@@ -120,10 +123,11 @@
             android:id="@+id/text-location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="34dp"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/icon-site"
-            android:layout_below="@+id/icon-info"
+            android:layout_alignTop="@id/icon-location"
+            android:layout_alignBottom="@id/icon-location"
+            android:gravity="center_vertical"
+            android:layout_toRightOf="@+id/icon-location"
+            android:layout_marginLeft="20dp"
             android:textSize="18sp"
             android:text="Devizes, Wiltshire, UK."/>
 
