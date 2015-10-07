@@ -47,4 +47,14 @@
         android:layout_centerHorizontal="true"
         android:layout_margin="30dp"/>
 
+    <TextView
+        android:id="@+id/lblScore"
+        android:text="Score: 0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:textSize="22sp"
+        android:gravity="right"
+        />
+
 </RelativeLayout>

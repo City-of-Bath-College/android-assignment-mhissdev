@@ -1,5 +1,7 @@
 package com.example.mhissdev.com.myapplication;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnTrue;
     private TextView lblQuestion;
     private ImageView imgPicture;
+    private TextView lblScore;
     private ArrayList<QuestionObject> questions;
     private int score;
     private int numQuestions;
@@ -32,42 +35,41 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         /* Assign variables to interface items */
-        this.btnFalse = (Button)findViewById(R.id.btnFalse);
-        this.btnTrue = (Button)findViewById(R.id.btnTrue);
-        this.lblQuestion = (TextView)findViewById(R.id.lblQuestion);
-        this.imgPicture = (ImageView)findViewById(R.id.imgPicture);
+        btnFalse = (Button)findViewById(R.id.btnFalse);
+        btnTrue = (Button)findViewById(R.id.btnTrue);
+        lblQuestion = (TextView)findViewById(R.id.lblQuestion);
+        imgPicture = (ImageView)findViewById(R.id.imgPicture);
+        lblScore = (TextView)findViewById(R.id.lblScore);
 
         /* Init vars */
-        this.score = 0;
-        this.numQuestions = 0;
-        this.currentQuestion = 0;
-        this.answer = false;
-
-        /* Setup questions */
-        this.questions = new ArrayList<QuestionObject>();
-        setupQuestions();
-        this.numQuestions = this.questions.size();
-        this.nextQuestion();
+        score = 0;
+        numQuestions = 0;
+        currentQuestion = 0;
 
         /* Add listener for false button */
-        this.btnFalse.setOnClickListener(new View.OnClickListener() {
+        btnFalse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /* Show toast */
-                // Toast.makeText(MainActivity.this, "Correct, Bath is in the county of Somerset!!", Toast.LENGTH_SHORT).show();
-
+                // Check answer
+                if(currentQuestion <  numQuestions){
+                    checkAnswer(false);
+                }
             }
         });
 
         /* Add listener for true button */
-        this.btnTrue.setOnClickListener(new View.OnClickListener() {
+        btnTrue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /* Show toast */
-                // Toast.makeText(MainActivity.this, "Wrong, Bath is in the county of Somerset!!", Toast.LENGTH_SHORT).show();
-                
+                // Check answer
+                if(currentQuestion <  numQuestions){
+                    checkAnswer(true);
+                }
             }
         });
+
+        /* Setup questions */
+        setupQuestions();
     }
 
     @Override
@@ -93,28 +95,74 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupQuestions(){
+        // Init question array list
+        questions = new ArrayList<QuestionObject>();
+
         /* Question 1 */
-        this.questions.add(new QuestionObject(
-                "Bath is in the county of Avon?",
-                false,
-                R.drawable.bath));
+        questions.add(new QuestionObject("Bath is in the county of Avon?", false, R.drawable.bath));
 
         /* Question 2 */
-        this.questions.add(new QuestionObject(
-                "London is the capital of England?",
-                false,
-                R.drawable.uk_flag));
+        questions.add(new QuestionObject("London is the capital of England?", true, R.drawable.uk_flag));
+
+        // Set number of questions
+        numQuestions = questions.size();
+
+        // Do next question
+        nextQuestion();
     }
 
     private void nextQuestion(){
 
-        if(this.currentQuestion <  this.numQuestions) {
+        if(currentQuestion <  numQuestions) {
             // Set question text
-            this.lblQuestion.setText(this.questions.get(this.currentQuestion).getQuestion());
+            lblQuestion.setText(questions.get(currentQuestion).getQuestion());
 
             // Set Image
-            this.imgPicture.setImageResource(this.questions.get(this.currentQuestion).getPicure());
+            imgPicture.setImageResource(questions.get(currentQuestion).getPicure());
+        }
+        else{
+            // Quiz has finished
+            endGame();
         }
 
     }
+
+    private void checkAnswer(boolean answer){
+
+        // Check Answer
+        if(answer == questions.get(currentQuestion).getAnswer()){
+            // Answer is correct
+            Toast.makeText(MainActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
+
+            // Update score
+            score++;
+            lblScore.setText("Score:" + Integer.toString(score));
+        }
+        else{
+            // Answer is wrong
+            Toast.makeText(MainActivity.this, "Wrong!!", Toast.LENGTH_SHORT).show();
+        }
+
+        // Do next question
+        currentQuestion++;
+        nextQuestion();
+
+    }
+
+
+    private void endGame(){
+        final AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this)
+                .setTitle("Congratulations!")
+                .setMessage("You scored " + Integer.toString(score) + " points this round.")
+                .setNeutralButton("OK", new DialogInterface.OnClickListener(){
+                    public void onClick(DialogInterface dialog, int which){
+                        // OMG this looks HORRIBLE!!!!!!!!!!!!
+                    }
+                })
+                .create();
+
+        alertDialog.show();
+    }
+
+
 }
