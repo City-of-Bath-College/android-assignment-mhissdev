@@ -19,15 +19,15 @@ public class QuestionObject {
     }
 
     /* Public methods */
-    String getQuestion(){
+    public String getQuestion(){
         return this.question;
     }
 
-    Boolean getAnswer(){
+    public Boolean getAnswer(){
         return this.answer;
     }
 
-    int getPicure(){
+    public int getPicure(){
         return this.picture;
     }
 }

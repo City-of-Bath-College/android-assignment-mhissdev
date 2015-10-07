@@ -10,6 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
+
 public class MainActivity extends AppCompatActivity {
 
     /* Variables */
@@ -17,6 +20,11 @@ public class MainActivity extends AppCompatActivity {
     private Button btnTrue;
     private TextView lblQuestion;
     private ImageView imgPicture;
+    private ArrayList<QuestionObject> questions;
+    private int score;
+    private int numQuestions;
+    private int currentQuestion;
+    private Boolean answer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,18 +37,25 @@ public class MainActivity extends AppCompatActivity {
         this.lblQuestion = (TextView)findViewById(R.id.lblQuestion);
         this.imgPicture = (ImageView)findViewById(R.id.imgPicture);
 
-        /* Set question text */
-        this.lblQuestion.setText("Is Bath in the county of Avon?");
+        /* Init vars */
+        this.score = 0;
+        this.numQuestions = 0;
+        this.currentQuestion = 0;
+        this.answer = false;
 
-        /* Set image */
-        this.imgPicture.setImageResource(R.drawable.bath);
+        /* Setup questions */
+        this.questions = new ArrayList<QuestionObject>();
+        setupQuestions();
+        this.numQuestions = this.questions.size();
+        this.nextQuestion();
 
         /* Add listener for false button */
         this.btnFalse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 /* Show toast */
-                Toast.makeText(MainActivity.this, "Correct, Bath is in the county of Somerset!!", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(MainActivity.this, "Correct, Bath is in the county of Somerset!!", Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -49,7 +64,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 /* Show toast */
-                Toast.makeText(MainActivity.this, "Wrong, Bath is in the county of Somerset!!", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(MainActivity.this, "Wrong, Bath is in the county of Somerset!!", Toast.LENGTH_SHORT).show();
+                
             }
         });
     }
@@ -74,5 +90,31 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void setupQuestions(){
+        /* Question 1 */
+        this.questions.add(new QuestionObject(
+                "Bath is in the county of Avon?",
+                false,
+                R.drawable.bath));
+
+        /* Question 2 */
+        this.questions.add(new QuestionObject(
+                "London is the capital of England?",
+                false,
+                R.drawable.uk_flag));
+    }
+
+    private void nextQuestion(){
+
+        if(this.currentQuestion <  this.numQuestions) {
+            // Set question text
+            this.lblQuestion.setText(this.questions.get(this.currentQuestion).getQuestion());
+
+            // Set Image
+            this.imgPicture.setImageResource(this.questions.get(this.currentQuestion).getPicure());
+        }
+
     }
 }
