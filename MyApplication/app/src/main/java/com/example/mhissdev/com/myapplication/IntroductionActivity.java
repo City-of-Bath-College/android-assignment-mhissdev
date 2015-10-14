@@ -29,6 +29,7 @@ public class IntroductionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Code goes here
+                Log.d("MHISSDEV", "BUTTON About");
                 Intent  i = new Intent(IntroductionActivity.this, ProfileActivity.class);
                 startActivity(i);
             }
