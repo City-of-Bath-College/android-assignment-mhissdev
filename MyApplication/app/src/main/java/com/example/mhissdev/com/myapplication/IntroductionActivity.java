@@ -3,6 +3,7 @@ package com.example.mhissdev.com.myapplication;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.Button;
 public class IntroductionActivity extends AppCompatActivity {
 
     /* Declare vars */
+    private Button btnPlay;
     private Button btnAbout;
 
     @Override
@@ -20,6 +22,7 @@ public class IntroductionActivity extends AppCompatActivity {
 
         /* Init vars */
         btnAbout = (Button)findViewById(R.id.btnAbout);
+        btnPlay =  (Button)findViewById(R.id.btnPlay);
 
         /* Add listener for false button */
         btnAbout.setOnClickListener(new View.OnClickListener() {
@@ -27,6 +30,16 @@ public class IntroductionActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Code goes here
                 Intent  i = new Intent(IntroductionActivity.this, ProfileActivity.class);
+                startActivity(i);
+            }
+        });
+
+        btnPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Code goes here
+                Log.d("MHISSDEV", "BUTTON PLAY");
+                Intent  i = new Intent(IntroductionActivity.this, MainActivity.class);
                 startActivity(i);
             }
         });
