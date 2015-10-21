@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import io.paperdb.Paper;
 
@@ -167,6 +168,9 @@ public class MainActivity extends AppCompatActivity {
                 .create();
 
         alertDialog.show();
+
+        // Handle hogh score objects using paper
+        HighScoreObject highScore = new HighScoreObject(score,  "MyName", new Date().getTime());
     }
 
 
