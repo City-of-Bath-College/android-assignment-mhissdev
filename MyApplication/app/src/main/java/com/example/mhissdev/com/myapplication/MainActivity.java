@@ -4,16 +4,19 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import io.paperdb.Paper;
 
@@ -31,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private int numQuestions;
     private int currentQuestion;
     private Boolean answer;
+    String playerName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -157,6 +161,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void endGame(){
+
+        /*
         final AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this)
                 .setTitle("Congratulations!")
                 .setMessage("You scored " + Integer.toString(score) + " points this round.")
@@ -168,9 +174,51 @@ public class MainActivity extends AppCompatActivity {
                 .create();
 
         alertDialog.show();
+        */
 
-        // Handle hogh score objects using paper
+        // Build dialogue
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Title");
+
+        // See http://stackoverflow.com/questions/10903754/input-text-dialog-android
+        // Set up the input
+        final EditText input = new EditText(this);
+
+        // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        builder.setView(input);
+
+        // Set up the buttons
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                playerName = input.getText().toString();
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+
+        // Handle high score objects using paper
         HighScoreObject highScore = new HighScoreObject(score,  "MyName", new Date().getTime());
+
+        // Get user preferences
+        List<HighScoreObject> highScores = Paper.book().read("highscores", new ArrayList<HighScoreObject>());
+
+        // Add item
+        highScores.add(highScore);
+
+        // Write using paper
+        Paper.book().write("highScores", highScores);
+
+        // Return back to main menu
+        /* finish(); */
     }
 
 
