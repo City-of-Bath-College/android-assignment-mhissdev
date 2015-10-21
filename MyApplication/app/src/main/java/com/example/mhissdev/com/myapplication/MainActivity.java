@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import io.paperdb.Paper;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -70,6 +72,9 @@ public class MainActivity extends AppCompatActivity {
 
         /* Setup questions */
         setupQuestions();
+
+        /* Init */
+        Paper.init(this);
     }
 
     @Override
