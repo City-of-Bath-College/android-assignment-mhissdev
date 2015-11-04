@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private int numQuestions;
     private int currentQuestion;
     private Boolean answer;
-    String playerName;
+    private String playerName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         /* Setup questions */
         setupQuestions();
 
-        /* Init */
+        /* Init Paper*/
         Paper.init(this);
     }
 
@@ -178,14 +178,14 @@ public class MainActivity extends AppCompatActivity {
 
         // Build dialogue
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Title");
+        builder.setTitle("Please enter your name:");
 
         // See http://stackoverflow.com/questions/10903754/input-text-dialog-android
         // Set up the input
         final EditText input = new EditText(this);
 
         // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
-        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
         builder.setView(input);
 
         // Set up the buttons
@@ -193,6 +193,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 playerName = input.getText().toString();
+
+                // Handle high score objects using paper
+                HighScoreObject highScore = new HighScoreObject(score,  "MyName", new Date().getTime());
+
+                // Get user preferences
+                List<HighScoreObject> highScores = Paper.book().read("highscores", new ArrayList<HighScoreObject>());
+
+                // Add item
+                highScores.add(highScore);
+
+                // Write using paper
+                Paper.book().write("highScores", highScores);
+
+                finish();
             }
         });
 
@@ -205,20 +219,6 @@ public class MainActivity extends AppCompatActivity {
 
         builder.show();
 
-        // Handle high score objects using paper
-        HighScoreObject highScore = new HighScoreObject(score,  "MyName", new Date().getTime());
-
-        // Get user preferences
-        List<HighScoreObject> highScores = Paper.book().read("highscores", new ArrayList<HighScoreObject>());
-
-        // Add item
-        highScores.add(highScore);
-
-        // Write using paper
-        Paper.book().write("highScores", highScores);
-
-        // Return back to main menu
-        /* finish(); */
     }
 
 
