@@ -16,7 +16,7 @@
 
     <TextView
         android:id="@+id/welcomeMessage"
-        android:text="Welcome to this AWESOME Android app!!!!"
+        android:text="Welcome to an AWESOME quiz!"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"

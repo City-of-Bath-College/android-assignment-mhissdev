@@ -162,23 +162,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void endGame(){
 
-        /*
-        final AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this)
-                .setTitle("Congratulations!")
-                .setMessage("You scored " + Integer.toString(score) + " points this round.")
-                .setNeutralButton("OK", new DialogInterface.OnClickListener(){
-                    public void onClick(DialogInterface dialog, int which){
-                        // OMG this looks HORRIBLE!!!!!!!!!!!!
-                    }
-                })
-                .create();
-
-        alertDialog.show();
-        */
-
         // Build dialogue
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Please enter your name:");
+        builder.setTitle("Congratulations!");
+        builder.setMessage("Please enter your name:");
 
         // See http://stackoverflow.com/questions/10903754/input-text-dialog-android
         // Set up the input
@@ -195,10 +182,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 playerName = input.getText().toString();
 
-                // Handle high score objects using paper
-                HighScoreObject highScore = new HighScoreObject(score,  "MyName", new Date().getTime());
+                // Create new highscore
+                HighScoreObject highScore = new HighScoreObject(score,  playerName, new Date().getTime());
 
-                // Get user preferences
+                // Load highscores using paper
                 List<HighScoreObject> highScores = Paper.book().read("highscores", new ArrayList<HighScoreObject>());
 
                 // Add item
