@@ -189,6 +189,7 @@ public class MainActivity extends AppCompatActivity {
         builder.setView(input);
 
         // Set up the buttons
+        // Ok button
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -210,6 +211,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Cancel button
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

@@ -8,12 +8,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class IntroductionActivity extends AppCompatActivity {
 
     /* Declare vars */
     private Button btnPlay;
     private Button btnAbout;
+    private TextView lblHighScore;
+    private int highScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +26,13 @@ public class IntroductionActivity extends AppCompatActivity {
         /* Init vars */
         btnAbout = (Button)findViewById(R.id.btnAbout);
         btnPlay =  (Button)findViewById(R.id.btnPlay);
+        lblHighScore = (TextView)findViewById(R.id.highScoreMessage);
+
+        // Retrieve High score
+        highScore = 3;
+
+        // Set High score text
+        lblHighScore.setText("Hi-score: " + Integer.toString(highScore));
 
         /* Add listener for false button */
         btnAbout.setOnClickListener(new View.OnClickListener() {
