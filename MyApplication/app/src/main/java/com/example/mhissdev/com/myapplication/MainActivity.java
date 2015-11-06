@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -128,7 +130,10 @@ public class MainActivity extends AppCompatActivity {
             lblQuestion.setText(questions.get(currentQuestion).getQuestion());
 
             // Set Image
-            imgPicture.setImageResource(questions.get(currentQuestion).getPicure());
+            /*imgPicture.setImageResource(questions.get(currentQuestion).getPicure());*/
+            Picasso.with(this)
+                    .load("https://cms-assets.tutsplus.com/uploads/users/21/posts/19431/featured_image/CodeFeature.jpg")
+                    .into(imgPicture);
         }
         else{
             // Quiz has finished
