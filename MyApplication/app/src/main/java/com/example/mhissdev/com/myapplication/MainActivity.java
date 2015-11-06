@@ -111,10 +111,74 @@ public class MainActivity extends AppCompatActivity {
         questions = new ArrayList<QuestionObject>();
 
         /* Question 1 */
-        questions.add(new QuestionObject("Bath is in the county of Avon?", false, R.drawable.bath));
+        questions.add(new QuestionObject(
+                "Paris is the capital of Spain??",
+                false,
+                "http://cache-graphicslib.viator.com/graphicslib/thumbs674x446/2050/SITours/eiffel-tower-paris-moulin-rouge-show-and-seine-river-cruise-in-paris-150305.jpg"
+        ));
 
         /* Question 2 */
-        questions.add(new QuestionObject("London is the capital of England?", true, R.drawable.uk_flag));
+        questions.add(new QuestionObject(
+                "Rome is the capital of Italy??",
+                false,
+                "http://cache-graphicslib.viator.com/graphicslib/thumbs674x446/2050/SITours/eiffel-tower-paris-moulin-rouge-show-and-seine-river-cruise-in-paris-150305.jpg"
+        ));
+
+        /* Question 3 */
+        questions.add(new QuestionObject(
+                "London is the capital of England??",
+                false,
+                "http://cache-graphicslib.viator.com/graphicslib/thumbs674x446/2050/SITours/eiffel-tower-paris-moulin-rouge-show-and-seine-river-cruise-in-paris-150305.jpg"
+        ));
+
+        /* Question 4 */
+        questions.add(new QuestionObject(
+                "London is the capital of England??",
+                false,
+                "http://cache-graphicslib.viator.com/graphicslib/thumbs674x446/2050/SITours/eiffel-tower-paris-moulin-rouge-show-and-seine-river-cruise-in-paris-150305.jpg"
+        ));
+
+        /* Question 5 */
+        questions.add(new QuestionObject(
+                "London is the capital of England??",
+                false,
+                "http://cache-graphicslib.viator.com/graphicslib/thumbs674x446/2050/SITours/eiffel-tower-paris-moulin-rouge-show-and-seine-river-cruise-in-paris-150305.jpg"
+        ));
+
+        /* Question 6 */
+        questions.add(new QuestionObject(
+                "London is the capital of England??",
+                false,
+                "http://cache-graphicslib.viator.com/graphicslib/thumbs674x446/2050/SITours/eiffel-tower-paris-moulin-rouge-show-and-seine-river-cruise-in-paris-150305.jpg"
+        ));
+
+        /* Question 7 */
+        questions.add(new QuestionObject(
+                "London is the capital of England??",
+                false,
+                "http://cache-graphicslib.viator.com/graphicslib/thumbs674x446/2050/SITours/eiffel-tower-paris-moulin-rouge-show-and-seine-river-cruise-in-paris-150305.jpg"
+        ));
+
+        /* Question 8 */
+        questions.add(new QuestionObject(
+                "London is the capital of England??",
+                false,
+                "http://cache-graphicslib.viator.com/graphicslib/thumbs674x446/2050/SITours/eiffel-tower-paris-moulin-rouge-show-and-seine-river-cruise-in-paris-150305.jpg"
+        ));
+
+        /* Question 9 */
+        questions.add(new QuestionObject(
+                "London is the capital of England??",
+                false,
+                "http://cache-graphicslib.viator.com/graphicslib/thumbs674x446/2050/SITours/eiffel-tower-paris-moulin-rouge-show-and-seine-river-cruise-in-paris-150305.jpg"
+        ));
+
+        /* Question 10 */
+        questions.add(new QuestionObject(
+                "London is the capital of England??",
+                false,
+                "http://cache-graphicslib.viator.com/graphicslib/thumbs674x446/2050/SITours/eiffel-tower-paris-moulin-rouge-show-and-seine-river-cruise-in-paris-150305.jpg"
+        ));
 
         // Set number of questions
         numQuestions = questions.size();
@@ -132,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
             // Set Image
             /*imgPicture.setImageResource(questions.get(currentQuestion).getPicure());*/
             Picasso.with(this)
-                    .load("https://cms-assets.tutsplus.com/uploads/users/21/posts/19431/featured_image/CodeFeature.jpg")
+                    .load("http://cache-graphicslib.viator.com/graphicslib/thumbs674x446/2050/SITours/eiffel-tower-paris-moulin-rouge-show-and-seine-river-cruise-in-paris-150305.jpg")
                     .into(imgPicture);
         }
         else{
