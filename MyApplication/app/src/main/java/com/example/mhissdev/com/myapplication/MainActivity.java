@@ -195,9 +195,10 @@ public class MainActivity extends AppCompatActivity {
 
             // Set Image
             /*imgPicture.setImageResource(questions.get(currentQuestion).getPicure());*/
+            /*
             Picasso.with(this)
                     .load("http://cache-graphicslib.viator.com/graphicslib/thumbs674x446/2050/SITours/eiffel-tower-paris-moulin-rouge-show-and-seine-river-cruise-in-paris-150305.jpg")
-                    .into(imgPicture);
+                    .into(imgPicture);*/
         }
         else{
             // Quiz has finished

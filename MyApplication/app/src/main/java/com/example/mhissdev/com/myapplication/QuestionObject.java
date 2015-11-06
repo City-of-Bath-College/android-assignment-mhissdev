@@ -8,14 +8,14 @@ public class QuestionObject {
     /* Member variables */
     private String question;
     private Boolean answer;
-    private String woeid;
+    private String imageURL;
 
     /* Constructor */
-    public QuestionObject(String question, Boolean answer, String woeid){
+    public QuestionObject(String question, Boolean answer, String imageURL){
         /* Assign vars */
         this.question = question;
         this.answer = answer;
-        this.woeid = woeid;
+        this.imageURL = imageURL;
     }
 
     /* Public methods */
@@ -28,6 +28,6 @@ public class QuestionObject {
     }
 
     public String getImageURL(){
-        return this.woeid;
+        return this.imageURL;
     }
 }
