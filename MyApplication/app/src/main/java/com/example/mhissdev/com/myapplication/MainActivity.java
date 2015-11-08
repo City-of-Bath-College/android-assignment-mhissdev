@@ -18,6 +18,8 @@ import android.util.Log;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -266,6 +268,35 @@ public class MainActivity extends AppCompatActivity {
 
                 // Add item
                 highScores.add(highScore);
+
+                // Sort highscores by score / timestamp
+                /* http://stackoverflow.com/questions/2784514/sort-arraylist-of-custom-objects-by-property*/
+                Collections.sort(highScores, new Comparator<HighScoreObject>() {
+                    @Override
+                    public int compare(HighScoreObject lhs, HighScoreObject rhs) {
+                        // First compare scores
+                        if(lhs.score > rhs.score){
+                            return 1;
+                        }
+                        else if(lhs.score < rhs.score){
+                            return -1;
+                        }
+                        // Scores must be equal if we get here, lets compare timestamp
+                        else if(lhs.timestamp > rhs.timestamp){
+                            return 1;
+                        }
+                        else if(lhs.timestamp < rhs.timestamp){
+                            return -1;
+                        }
+                        else{
+                            // Scores and timestamp eaqual
+                            return 0;
+                        }
+                    }
+                });
+
+                // Reverse highscores
+                Collections.reverse(highScores);
 
                 // Write using paper
                 Paper.book().write("highscores", highScores);

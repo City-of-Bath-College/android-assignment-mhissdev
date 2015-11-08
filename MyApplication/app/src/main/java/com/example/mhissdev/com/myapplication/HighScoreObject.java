@@ -15,17 +15,8 @@ public class HighScoreObject {
 
     }
 
-    /*
-    // Constructor
-    public HighScoreObject(int score, String name, long timestamp){
 
-        this.score = score;
-        this.name = name;
-        this.timestamp = timestamp;
-    }
-    */
 
-    /*
     // Methods
     public int getScore() {
         return score;
@@ -38,5 +29,4 @@ public class HighScoreObject {
     public long getTimestamp() {
         return timestamp;
     }
-    */
 }
