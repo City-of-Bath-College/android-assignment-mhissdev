@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,18 +23,34 @@ public class HighScoreActivity extends AppCompatActivity {
 
     private ListView listView;
     private List<HighScoreObject> highScores;
+    private Button btnReset;
+    private TextView lblNoScores;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_high_score);
 
+        // Set no scores TextView
+        lblNoScores = (TextView)findViewById(R.id.lblNoScores);
+        lblNoScores.setVisibility(View.INVISIBLE);
+
+        // Display Scores
         Paper.init(this);
-        highScores = Paper.book().read("highscores", new ArrayList<HighScoreObject>());
-        Toast.makeText(this,"numHS: " + highScores.size(), Toast.LENGTH_SHORT).show();
-        HighscoreAdapter adapter = new HighscoreAdapter(highScores);
-        listView = (ListView)findViewById(R.id.listView);
-        listView.setAdapter(adapter);
+        displayScores();
+
+        // Reset button
+        btnReset = (Button)findViewById(R.id.btnReset);
+
+        btnReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Reset High scores
+                Paper.book().delete("highscores");
+                // Return to main activity
+                finish();
+            }
+        });
     }
 
     private class HighscoreAdapter extends ArrayAdapter<HighScoreObject> {
@@ -56,7 +73,7 @@ public class HighScoreActivity extends AppCompatActivity {
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
             TextView lblTitle = (TextView)convertView.findViewById(R.id.lblTitle);
-            String strOutput = (position + 1) + ". " + highscore.getName() + " " + highscore.getScore() + " " + dateFormat.format(date);
+            String strOutput = (position + 1) + ". " + highscore.getName()  + " " + dateFormat.format(date) + " : " + + highscore.getScore() + " points";
             lblTitle.setText(strOutput);
 
             return convertView;
@@ -84,5 +101,26 @@ public class HighScoreActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    protected void displayScores(){
+
+        // Load High Scores
+        highScores = Paper.book().read("highscores", new ArrayList<HighScoreObject>());
+
+        if(highScores.size() > 0){
+            // Display score list
+            HighscoreAdapter adapter = new HighscoreAdapter(highScores);
+            listView = (ListView)findViewById(R.id.listView);
+            listView.setAdapter(adapter);
+
+            // Hide No Scores
+            lblNoScores.setVisibility(View.INVISIBLE);
+        }
+        else{
+            // Display no scores
+            lblNoScores.setVisibility(View.VISIBLE);
+        }
+
     }
 }
