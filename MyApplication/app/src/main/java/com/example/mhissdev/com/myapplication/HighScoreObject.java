@@ -6,10 +6,16 @@ package com.example.mhissdev.com.myapplication;
 public class HighScoreObject {
 
     // Memebers
-    private int score;
-    private String name;
-    long timestamp;
+    public int score;
+    public String name;
+    public long timestamp;
 
+    // Default Constructor
+    public HighScoreObject(){
+
+    }
+
+    /*
     // Constructor
     public HighScoreObject(int score, String name, long timestamp){
 
@@ -17,7 +23,20 @@ public class HighScoreObject {
         this.name = name;
         this.timestamp = timestamp;
     }
+    */
 
+    /*
     // Methods
+    public int getScore() {
+        return score;
+    }
 
+    public String getName() {
+        return name;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+    */
 }

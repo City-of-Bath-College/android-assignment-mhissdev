@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.util.Log;
 
 import com.squareup.picasso.Picasso;
 
@@ -253,7 +254,12 @@ public class MainActivity extends AppCompatActivity {
                 playerName = input.getText().toString();
 
                 // Create new highscore
-                HighScoreObject highScore = new HighScoreObject(score,  playerName, new Date().getTime());
+                // Is this line screwing up the saving????????
+                //HighScoreObject highScore = new HighScoreObject(score,  playerName, new Date().getTime());
+                HighScoreObject highScore = new HighScoreObject();
+                highScore.score = score;
+                highScore.name = playerName;
+                highScore.timestamp = new Date().getTime();
 
                 // Load highscores using paper
                 List<HighScoreObject> highScores = Paper.book().read("highscores", new ArrayList<HighScoreObject>());
@@ -262,7 +268,8 @@ public class MainActivity extends AppCompatActivity {
                 highScores.add(highScore);
 
                 // Write using paper
-                Paper.book().write("highScores", highScores);
+                Paper.book().write("highscores", highScores);
+                Log.d("MHISSDEBUG", "Saving high scores!");
 
                 finish();
             }

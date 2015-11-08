@@ -10,6 +10,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import io.paperdb.Paper;
+
 public class IntroductionActivity extends AppCompatActivity {
 
     /* Declare vars */
@@ -23,23 +28,22 @@ public class IntroductionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_introduction);
 
+        Log.d("MHISSDEBUG", "Hello Inroduction Activity!");
+
         /* Init vars */
         btnAbout = (Button)findViewById(R.id.btnAbout);
         btnPlay =  (Button)findViewById(R.id.btnPlay);
         lblHighScore = (TextView)findViewById(R.id.highScoreMessage);
 
-        // Retrieve High score
-        highScore = 3;
-
-        // Set High score text
-        lblHighScore.setText("Hi-score: " + Integer.toString(highScore));
+        // Initiate Paper
+        Paper.init(this);
 
         /* Add listener for false button */
         btnAbout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Code goes here
-                Log.d("MHISSDEV", "BUTTON About");
+                Log.d("MHISSDEBUG", "BUTTON About");
                 Intent  i = new Intent(IntroductionActivity.this, ProfileActivity.class);
                 startActivity(i);
             }
@@ -49,11 +53,20 @@ public class IntroductionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Code goes here
-                Log.d("MHISSDEV", "BUTTON PLAY");
+                Log.d("MHISSDEBUG", "BUTTON PLAY");
                 Intent  i = new Intent(IntroductionActivity.this, MainActivity.class);
                 startActivity(i);
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d("MHISSDEBUG", "onStart Called!!");
+        highScore = getHighScore();
+        // Set High score text
+        lblHighScore.setText("High Score: " + Integer.toString(highScore));
     }
 
     @Override
@@ -76,5 +89,33 @@ public class IntroductionActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    private int getHighScore(){
+
+        // Declare default high score result
+        int result = 0;
+
+        // Load highscores using paper
+        List<HighScoreObject> highScores = Paper.book().read("highscores", new ArrayList<HighScoreObject>());
+
+        // Get length og list
+        int len = highScores.size();
+
+        if(len > 0){
+            // Hightscore objects exist
+            Log.d("MHISSDEBUG", "High scores found!");
+
+            // Highest Score should be first as we sorted them
+            HighScoreObject highScore = highScores.get(0);
+            result = highScore.score;
+        }
+        else{
+            // No High Score objects found
+            Log.d("MHISSDEBUG", "NO high scores found!");
+        }
+
+        return result;
     }
 }
