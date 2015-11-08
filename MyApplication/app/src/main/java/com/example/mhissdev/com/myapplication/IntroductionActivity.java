@@ -20,6 +20,7 @@ public class IntroductionActivity extends AppCompatActivity {
     /* Declare vars */
     private Button btnPlay;
     private Button btnAbout;
+    private Button btnHighScoreTable;
     private TextView lblHighScore;
     private int highScore;
 
@@ -28,11 +29,12 @@ public class IntroductionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_introduction);
 
-        Log.d("MHISSDEBUG", "Hello Inroduction Activity!");
+        Log.d("MHISSDEBUG", "***** APP START *****");
 
         /* Init vars */
         btnAbout = (Button)findViewById(R.id.btnAbout);
         btnPlay =  (Button)findViewById(R.id.btnPlay);
+        btnHighScoreTable = (Button)findViewById(R.id.btnHigh);
         lblHighScore = (TextView)findViewById(R.id.highScoreMessage);
 
         // Initiate Paper
@@ -55,6 +57,16 @@ public class IntroductionActivity extends AppCompatActivity {
                 // Code goes here
                 Log.d("MHISSDEBUG", "BUTTON PLAY");
                 Intent  i = new Intent(IntroductionActivity.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
+
+        btnHighScoreTable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Code goes here
+                Log.d("MHISSDEBUG", "BUTTON Highscore");
+                Intent  i = new Intent(IntroductionActivity.this, HighScoreActivity.class);
                 startActivity(i);
             }
         });

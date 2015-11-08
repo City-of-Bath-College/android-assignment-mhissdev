@@ -238,7 +238,7 @@ public class MainActivity extends AppCompatActivity {
         // Build dialogue
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Congratulations!");
-        builder.setMessage("Please enter your name:");
+        builder.setMessage("You scored " + score + " points! Please enter your name:");
 
         // See http://stackoverflow.com/questions/10903754/input-text-dialog-android
         // Set up the input

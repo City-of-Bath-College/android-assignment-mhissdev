@@ -18,16 +18,18 @@
             android:label="@string/title_activity_profile" >
         </activity>
         <activity
-
             android:name=".IntroductionActivity"
             android:label="@string/title_activity_introduction" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
+        <activity
+            android:name=".HighScoreActivity"
+            android:label="@string/title_activity_high_score" >
+        </activity>
     </application>
 
 </manifest>
