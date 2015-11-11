@@ -150,9 +150,9 @@ public class MainActivity extends AppCompatActivity {
 
         /* Question 6 */
         questions.add(new QuestionObject(
-                "London is the capital of England??",
-                false,
-                "http://cache-graphicslib.viator.com/graphicslib/thumbs674x446/2050/SITours/eiffel-tower-paris-moulin-rouge-show-and-seine-river-cruise-in-paris-150305.jpg"
+                "Canberra is the capital of Australia??",
+                true,
+                "http://95077ae8547a1b239f3b-5d2534a656ffdee95a27431d367b21fa.r54.cf1.rackcdn.com/27/1/large.jpg"
         ));
 
         /* Question 7 */
@@ -178,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
 
         /* Question 10 */
         questions.add(new QuestionObject(
-                "Zagreb is the capital of Croation??",
+                "Zagreb is the capital of Croatia??",
                 true,
                 "http://www.letstravelradio.com/thisweek/2008/05-08/croatia_main.jpg"
         ));
