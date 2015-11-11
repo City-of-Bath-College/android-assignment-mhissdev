@@ -157,30 +157,30 @@ public class MainActivity extends AppCompatActivity {
 
         /* Question 7 */
         questions.add(new QuestionObject(
-                "London is the capital of England??",
+                "Stockholm is the capital of Denmark??",
                 false,
-                "http://cache-graphicslib.viator.com/graphicslib/thumbs674x446/2050/SITours/eiffel-tower-paris-moulin-rouge-show-and-seine-river-cruise-in-paris-150305.jpg"
+                "http://www.europeanrhinologicsociety.org/wp-content/uploads/2014/05/Riddarholmen_from_Stockholm_City_Hall_tower.jpg"
         ));
 
         /* Question 8 */
         questions.add(new QuestionObject(
-                "London is the capital of England??",
-                false,
-                "http://cache-graphicslib.viator.com/graphicslib/thumbs674x446/2050/SITours/eiffel-tower-paris-moulin-rouge-show-and-seine-river-cruise-in-paris-150305.jpg"
+                "Helsinki is the capital of Finland??",
+                true,
+                "http://www.europeanrhinologicsociety.org/wp-content/uploads/2014/05/Riddarholmen_from_Stockholm_City_Hall_tower.jpg"
         ));
 
         /* Question 9 */
         questions.add(new QuestionObject(
-                "London is the capital of England??",
+                "Madrid is the capital of Portugal??",
                 false,
-                "http://cache-graphicslib.viator.com/graphicslib/thumbs674x446/2050/SITours/eiffel-tower-paris-moulin-rouge-show-and-seine-river-cruise-in-paris-150305.jpg"
+                "http://anastasia.llobe.com/wp-content/uploads/2014/10/madrid4.jpg"
         ));
 
         /* Question 10 */
         questions.add(new QuestionObject(
-                "London is the capital of England??",
-                false,
-                "http://cache-graphicslib.viator.com/graphicslib/thumbs674x446/2050/SITours/eiffel-tower-paris-moulin-rouge-show-and-seine-river-cruise-in-paris-150305.jpg"
+                "Zagreb is the capital of Croation??",
+                true,
+                "http://www.letstravelradio.com/thisweek/2008/05-08/croatia_main.jpg"
         ));
 
         // Set number of questions
