@@ -48,7 +48,8 @@ public class HighScoreActivity extends AppCompatActivity {
                 // Reset High scores
                 Paper.book().delete("highscores");
                 // Return to main activity
-                finish();
+                /*finish();*/
+                setContentView(R.layout.activity_high_score);
             }
         });
     }

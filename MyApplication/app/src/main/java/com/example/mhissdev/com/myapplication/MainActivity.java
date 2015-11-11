@@ -117,35 +117,35 @@ public class MainActivity extends AppCompatActivity {
         questions.add(new QuestionObject(
                 "Paris is the capital of Spain??",
                 false,
-                "http://cache-graphicslib.viator.com/graphicslib/thumbs674x446/2050/SITours/eiffel-tower-paris-moulin-rouge-show-and-seine-river-cruise-in-paris-150305.jpg"
+                "http://goo.gl/wKOqbX"
         ));
 
         /* Question 2 */
         questions.add(new QuestionObject(
                 "Rome is the capital of Italy??",
-                false,
-                "http://cache-graphicslib.viator.com/graphicslib/thumbs674x446/2050/SITours/eiffel-tower-paris-moulin-rouge-show-and-seine-river-cruise-in-paris-150305.jpg"
+                true,
+                "http://www.telegraph.co.uk/travel/hotel/article129671.ece/ALTERNATES/w620/rometravelguide5.jpg"
         ));
 
         /* Question 3 */
         questions.add(new QuestionObject(
                 "London is the capital of England??",
-                false,
-                "http://cache-graphicslib.viator.com/graphicslib/thumbs674x446/2050/SITours/eiffel-tower-paris-moulin-rouge-show-and-seine-river-cruise-in-paris-150305.jpg"
+                true,
+                "http://cdn.londonandpartners.com/assets/73295-640x360-london-skyline-ns.jpg"
         ));
 
         /* Question 4 */
         questions.add(new QuestionObject(
-                "London is the capital of England??",
-                false,
-                "http://cache-graphicslib.viator.com/graphicslib/thumbs674x446/2050/SITours/eiffel-tower-paris-moulin-rouge-show-and-seine-river-cruise-in-paris-150305.jpg"
+                "Dublin is the capital of Ireland??",
+                true,
+                "http://www.aeroport-perpignan.com/sites/default/files/dublin_1830978b.jpg"
         ));
 
         /* Question 5 */
         questions.add(new QuestionObject(
-                "London is the capital of England??",
+                "Addis Ababa is the capital of Sudan??",
                 false,
-                "http://cache-graphicslib.viator.com/graphicslib/thumbs674x446/2050/SITours/eiffel-tower-paris-moulin-rouge-show-and-seine-river-cruise-in-paris-150305.jpg"
+                "http://buzzkenya.com/wp-content/uploads/2015/01/Addis-Ababa-1.jpg"
         ));
 
         /* Question 6 */
@@ -198,10 +198,10 @@ public class MainActivity extends AppCompatActivity {
 
             // Set Image
             /*imgPicture.setImageResource(questions.get(currentQuestion).getPicure());*/
-            /*
+
             Picasso.with(this)
-                    .load("http://cache-graphicslib.viator.com/graphicslib/thumbs674x446/2050/SITours/eiffel-tower-paris-moulin-rouge-show-and-seine-river-cruise-in-paris-150305.jpg")
-                    .into(imgPicture);*/
+                    .load(questions.get(currentQuestion).getImageURL())
+                    .into(imgPicture);
         }
         else{
             // Quiz has finished
