@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnFalse;
     private Button btnTrue;
     private TextView lblQuestion;
+    private TextView lblQuestionNumber;
     private ImageView imgPicture;
     private TextView lblScore;
     private ArrayList<QuestionObject> questions;
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         btnFalse = (Button)findViewById(R.id.btnFalse);
         btnTrue = (Button)findViewById(R.id.btnTrue);
         lblQuestion = (TextView)findViewById(R.id.lblQuestion);
+        lblQuestionNumber = (TextView)findViewById(R.id.lblQuestionNumber);
         imgPicture = (ImageView)findViewById(R.id.imgPicture);
         lblScore = (TextView)findViewById(R.id.lblScore);
 
@@ -109,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /* Setup questions array */
     private void setupQuestions(){
         // Init question array list
         questions = new ArrayList<QuestionObject>();
@@ -159,14 +162,14 @@ public class MainActivity extends AppCompatActivity {
         questions.add(new QuestionObject(
                 "Stockholm is the capital of Denmark??",
                 false,
-                "http://www.europeanrhinologicsociety.org/wp-content/uploads/2014/05/Riddarholmen_from_Stockholm_City_Hall_tower.jpg"
+                "http://cache-graphicslib.viator.com/graphicslib/thumbs674x446/3904/SITours/stockholm-grand-tour-by-coach-and-boat-in-stockholm-142840.jpg"
         ));
 
         /* Question 8 */
         questions.add(new QuestionObject(
                 "Helsinki is the capital of Finland??",
                 true,
-                "http://www.europeanrhinologicsociety.org/wp-content/uploads/2014/05/Riddarholmen_from_Stockholm_City_Hall_tower.jpg"
+                "https://s-media-cache-ak0.pinimg.com/originals/00/c9/0d/00c90d43127c8617f689e72f73f0e976.jpg"
         ));
 
         /* Question 9 */
@@ -183,18 +186,37 @@ public class MainActivity extends AppCompatActivity {
                 "http://www.letstravelradio.com/thisweek/2008/05-08/croatia_main.jpg"
         ));
 
+        /* Question 11 */
+        questions.add(new QuestionObject(
+                "Tokyo is the capital of China??",
+                false,
+                "http://www.telegraph.co.uk/incoming/article115762.ece/ALTERNATES/w460/tokyo.jpg"
+        ));
+
+        // Randomise order of questions
+        Collections.shuffle(questions);
+
         // Set number of questions
         numQuestions = questions.size();
+
+        // Ensure Maximum of 10 questions
+        if(numQuestions > 10){
+            numQuestions = 10;
+        }
 
         // Do next question
         nextQuestion();
     }
 
+    // Initiate next question
     private void nextQuestion(){
 
         if(currentQuestion <  numQuestions) {
             // Set question text
             lblQuestion.setText(questions.get(currentQuestion).getQuestion());
+
+            // Set Question number
+            lblQuestionNumber.setText("Question " + (currentQuestion + 1));
 
             // Set Image
             /*imgPicture.setImageResource(questions.get(currentQuestion).getPicure());*/

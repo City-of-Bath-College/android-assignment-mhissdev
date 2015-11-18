@@ -1,5 +1,6 @@
 package com.example.mhissdev.com.myapplication;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -47,12 +48,13 @@ public class HighScoreActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Reset High scores
                 Paper.book().delete("highscores");
-                // Return to main activity
-                /*finish();*/
+
+                /* Reinflate view */
                 setContentView(R.layout.activity_high_score);
             }
         });
     }
+
 
     private class HighscoreAdapter extends ArrayAdapter<HighScoreObject> {
 
@@ -73,9 +75,15 @@ public class HighScoreActivity extends AppCompatActivity {
             Date date = new Date(highscore.getTimestamp());
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
+            // Set Text
             TextView lblTitle = (TextView)convertView.findViewById(R.id.lblTitle);
             String strOutput = (position + 1) + ". " + highscore.getName()  + " " + dateFormat.format(date) + " : " + + highscore.getScore() + " points";
             lblTitle.setText(strOutput);
+
+            // Set Text colour for highest score
+            if(position == 0){
+                lblTitle.setTextColor(Color.parseColor("#cc2222"));
+            }
 
             return convertView;
         }// end get view
