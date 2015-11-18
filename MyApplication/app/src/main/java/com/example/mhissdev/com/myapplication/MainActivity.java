@@ -141,7 +141,14 @@ public class MainActivity extends AppCompatActivity {
                     // Add each object to questions
                     for(int i=0; i<len; i++)
                     {
+                       ParseObject temp = objects.get(i);
 
+                        /* Add qestion to array */
+                        questions.add(new QuestionObject(
+                                temp.getString("Question"),
+                                temp.getBoolean("Answer"),
+                                temp.getString("ImageURL")
+                        ));
                     }
 
                 } else {
