@@ -134,8 +134,16 @@ public class MainActivity extends AppCompatActivity {
 
             public void done(List<ParseObject> objects, ParseException e) {
                 if (e == null) {
-                    /*objectsWereRetrievedSuccessfully(objects);*/
+
                     Log.d("MHISSDEV", "DATA LOADED OK!");
+                    int len = objects.size();
+
+                    // Add each object to questions
+                    for(int i=0; i<len; i++)
+                    {
+
+                    }
+
                 } else {
                     /* Oh dear, something went wrong */
                     Log.d("MHISSDEV", "ERROR NO DATA LOADED");
