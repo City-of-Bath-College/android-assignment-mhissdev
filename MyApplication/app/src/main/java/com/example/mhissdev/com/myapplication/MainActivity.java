@@ -92,8 +92,6 @@ public class MainActivity extends AppCompatActivity {
 
         /* Setup questions */
         //setupQuestions();
-        // Load Questions
-        loadQuestionsFromParseAPI();
 
         /* Init Paper*/
         Paper.init(this);
@@ -102,6 +100,8 @@ public class MainActivity extends AppCompatActivity {
         Parse.enableLocalDatastore(this);
         Parse.initialize(this, "TEgJ17iShc3etRNM9szf40RRtg47D7QBATzU8x8u", "QjVvFeZJUc2oBYe1ZgHpl4EMlCMrCJR2aO073rBo");
         /*ParseObject testObject = new ParseObject("TestObject");*/
+        // Load Questions
+        loadQuestionsFromParseAPI();
     }
 
     @Override
