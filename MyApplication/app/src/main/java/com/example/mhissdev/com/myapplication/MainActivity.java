@@ -91,12 +91,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
         /* Setup questions */
-        setupQuestions();
+        //setupQuestions();
+        // Load Questions
+        loadQuestionsFromParseAPI();
 
         /* Init Paper*/
         Paper.init(this);
 
-        // Enable Local Datastore.
+        // Enable Local Datastore for P.
         Parse.enableLocalDatastore(this);
         Parse.initialize(this, "TEgJ17iShc3etRNM9szf40RRtg47D7QBATzU8x8u", "QjVvFeZJUc2oBYe1ZgHpl4EMlCMrCJR2aO073rBo");
         /*ParseObject testObject = new ParseObject("TestObject");*/
@@ -124,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void LoadQuestionsFromParseAPI(){
+    private void loadQuestionsFromParseAPI(){
 
         // Get JSON data from Parse.com
         ParseQuery<ParseObject> query = ParseQuery.getQuery("ParseQuestionObject");
