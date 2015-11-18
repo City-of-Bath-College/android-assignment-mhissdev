@@ -15,6 +15,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.util.Log;
 
+import com.parse.Parse;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -87,6 +90,12 @@ public class MainActivity extends AppCompatActivity {
 
         /* Init Paper*/
         Paper.init(this);
+
+        // Enable Local Datastore.
+        Parse.enableLocalDatastore(this);
+        Parse.initialize(this, "TEgJ17iShc3etRNM9szf40RRtg47D7QBATzU8x8u", "QjVvFeZJUc2oBYe1ZgHpl4EMlCMrCJR2aO073rBo");
+        ParseObject testObject = new ParseObject("TestObject");
+
     }
 
     @Override
@@ -116,7 +125,9 @@ public class MainActivity extends AppCompatActivity {
         // Init question array list
         questions = new ArrayList<QuestionObject>();
 
+
         /* Question 1 */
+        /*
         questions.add(new QuestionObject(
                 "Paris is the capital of Spain??",
                 false,
@@ -124,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
         ));
 
         /* Question 2 */
+        /*
         questions.add(new QuestionObject(
                 "Rome is the capital of Italy??",
                 true,
@@ -131,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
         ));
 
         /* Question 3 */
+        /*
         questions.add(new QuestionObject(
                 "London is the capital of England??",
                 true,
@@ -138,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
         ));
 
         /* Question 4 */
+        /*
         questions.add(new QuestionObject(
                 "Dublin is the capital of Ireland??",
                 true,
@@ -145,6 +159,7 @@ public class MainActivity extends AppCompatActivity {
         ));
 
         /* Question 5 */
+        /*
         questions.add(new QuestionObject(
                 "Addis Ababa is the capital of Sudan??",
                 false,
@@ -152,6 +167,7 @@ public class MainActivity extends AppCompatActivity {
         ));
 
         /* Question 6 */
+        /*
         questions.add(new QuestionObject(
                 "Canberra is the capital of Australia??",
                 true,
@@ -159,6 +175,7 @@ public class MainActivity extends AppCompatActivity {
         ));
 
         /* Question 7 */
+        /*
         questions.add(new QuestionObject(
                 "Stockholm is the capital of Denmark??",
                 false,
@@ -166,6 +183,7 @@ public class MainActivity extends AppCompatActivity {
         ));
 
         /* Question 8 */
+        /*
         questions.add(new QuestionObject(
                 "Helsinki is the capital of Finland??",
                 true,
@@ -173,6 +191,7 @@ public class MainActivity extends AppCompatActivity {
         ));
 
         /* Question 9 */
+        /*
         questions.add(new QuestionObject(
                 "Madrid is the capital of Portugal??",
                 false,
@@ -180,6 +199,7 @@ public class MainActivity extends AppCompatActivity {
         ));
 
         /* Question 10 */
+        /*
         questions.add(new QuestionObject(
                 "Zagreb is the capital of Croatia??",
                 true,
@@ -187,11 +207,14 @@ public class MainActivity extends AppCompatActivity {
         ));
 
         /* Question 11 */
+        /*
         questions.add(new QuestionObject(
                 "Tokyo is the capital of China??",
                 false,
                 "http://www.telegraph.co.uk/incoming/article115762.ece/ALTERNATES/w460/tokyo.jpg"
         ));
+        */
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("ParseQuestionObject");
 
         // Randomise order of questions
         Collections.shuffle(questions);
