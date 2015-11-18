@@ -151,6 +151,8 @@ public class MainActivity extends AppCompatActivity {
                         ));
                     }
 
+                    setupQuestions();
+
                 } else {
                     /* Oh dear, something went wrong */
                     Log.d("MHISSDEV", "ERROR NO DATA LOADED");
