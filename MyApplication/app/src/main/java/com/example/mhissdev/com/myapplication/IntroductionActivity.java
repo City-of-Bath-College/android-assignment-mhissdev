@@ -51,6 +51,7 @@ public class IntroductionActivity extends AppCompatActivity {
             }
         });
 
+        /* Add listener for play button */
         btnPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,6 +62,7 @@ public class IntroductionActivity extends AppCompatActivity {
             }
         });
 
+        /* Add listener for High score button */
         btnHighScoreTable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
