@@ -15,7 +15,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.util.Log;
 
+import com.parse.FindCallback;
 import com.parse.Parse;
+import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.squareup.picasso.Picasso;
@@ -63,6 +65,9 @@ public class MainActivity extends AppCompatActivity {
         numQuestions = 0;
         currentQuestion = 0;
 
+        // Init question array list
+        questions = new ArrayList<QuestionObject>();
+
         /* Add listener for false button */
         btnFalse.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,8 +99,7 @@ public class MainActivity extends AppCompatActivity {
         // Enable Local Datastore.
         Parse.enableLocalDatastore(this);
         Parse.initialize(this, "TEgJ17iShc3etRNM9szf40RRtg47D7QBATzU8x8u", "QjVvFeZJUc2oBYe1ZgHpl4EMlCMrCJR2aO073rBo");
-        ParseObject testObject = new ParseObject("TestObject");
-
+        /*ParseObject testObject = new ParseObject("TestObject");*/
     }
 
     @Override
@@ -120,11 +124,27 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    private void LoadQuestionsFromParseAPI(){
+
+        // Get JSON data from Parse.com
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("ParseQuestionObject");
+        query.findInBackground(new FindCallback<ParseObject>(){
+
+            public void done(List<ParseObject> objects, ParseException e) {
+                if (e == null) {
+                    /*objectsWereRetrievedSuccessfully(objects);*/
+                    Log.d("MHISSDEV", "DATA LOADED OK!");
+                } else {
+                    /* Oh dear, something went wrong */
+                    Log.d("MHISSDEV", "ERROR NO DATA LOADED");
+                }
+            }
+
+        });
+    }
+
     /* Setup questions array */
     private void setupQuestions(){
-        // Init question array list
-        questions = new ArrayList<QuestionObject>();
-
 
         /* Question 1 */
         /*
@@ -214,7 +234,8 @@ public class MainActivity extends AppCompatActivity {
                 "http://www.telegraph.co.uk/incoming/article115762.ece/ALTERNATES/w460/tokyo.jpg"
         ));
         */
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("ParseQuestionObject");
+
+        /* Get list of parese objects */
 
         // Randomise order of questions
         Collections.shuffle(questions);
