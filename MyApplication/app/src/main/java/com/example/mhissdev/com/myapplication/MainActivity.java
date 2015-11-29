@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private Boolean answer;
     private String playerName;
     private static final int MAX_QUESTIONS = 10;
+    private static final String IMAGE_ROOT_URL = "http://kvsk.org/dev/quiz/images/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -275,13 +276,22 @@ public class MainActivity extends AppCompatActivity {
             lblQuestionNumber.setText("Question " + (currentQuestion + 1));
 
             // Set Image
-            /*imgPicture.setImageResource(questions.get(currentQuestion).getPicure());*/
+            String imageURL = IMAGE_ROOT_URL + questions.get(currentQuestion).getImageURL();
 
+            // Load Image
+            /*
             Picasso.with(this)
-                    .load(questions.get(currentQuestion).getImageURL())
+                    .load(imageURL)
+                    .into(imgPicture)
+                    .error(R.drawable.question);
+                    */
+            Picasso.with(this)
+                    .load(imageURL)
+                    .placeholder(R.drawable.question)
+                    .error(R.drawable.question)
                     .into(imgPicture);
-        }
-        else{
+
+        } else{
             // Quiz has finished
             endGame();
         }
