@@ -25,7 +25,8 @@
         android:layout_margin="30dp"
         android:text="TRUE"
         android:textSize="22sp"
-        android:padding="10dp"/>
+        android:padding="10dp"
+        android:background="#05dd97"/>
 
     <Button
         android:id="@+id/btnFalse"
@@ -36,7 +37,8 @@
         android:layout_margin="30dp"
         android:text="FALSE"
         android:textSize="22sp"
-        android:padding="10dp"/>
+        android:padding="10dp"
+        android:background="#dd2e4d"/>
 
     <ImageView
         android:id="@+id/imgPicture"

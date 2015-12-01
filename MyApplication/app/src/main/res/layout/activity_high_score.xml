@@ -30,7 +30,8 @@
         android:layout_margin="2dp"
         android:text="RESET"
         android:textSize="22sp"
-        android:padding="10dp"/>
+        android:padding="10dp"
+        android:background="#dd2e4d"/>
 
     <TextView
         android:id="@+id/lblNoScores"
