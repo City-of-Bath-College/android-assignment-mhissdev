@@ -2,6 +2,7 @@ package com.example.mhissdev.com.myapplication;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
@@ -48,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
     private String playerName;
     private static final int MAX_QUESTIONS = 10;
     private static final String IMAGE_ROOT_URL = "http://kvsk.org/dev/quiz/images/";
+    private MediaPlayer correctSound;
+    private MediaPlayer wrongSound;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,8 +94,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        /* Set default image */
-        // imgPicture.setImageResource(R.drawable.question);
+        /* Init sounds */
+        correctSound = MediaPlayer.create(MainActivity.this, R.raw.ping );
+        wrongSound = MediaPlayer.create(MainActivity.this, R.raw.boo);
 
         /* Init Paper*/
         Paper.init(this);
@@ -279,12 +283,6 @@ public class MainActivity extends AppCompatActivity {
             String imageURL = IMAGE_ROOT_URL + questions.get(currentQuestion).getImageURL();
 
             // Load Image
-            /*
-            Picasso.with(this)
-                    .load(imageURL)
-                    .into(imgPicture)
-                    .error(R.drawable.question);
-                    */
             Picasso.with(this)
                     .load(imageURL)
                     .placeholder(R.drawable.question)
@@ -306,6 +304,9 @@ public class MainActivity extends AppCompatActivity {
             // Answer is correct
             Toast.makeText(MainActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
 
+            // Play Sound
+            correctSound.start();
+
             // Update score
             score++;
             lblScore.setText("Score:" + Integer.toString(score));
@@ -313,6 +314,8 @@ public class MainActivity extends AppCompatActivity {
         else{
             // Answer is wrong
             Toast.makeText(MainActivity.this, "Wrong!!", Toast.LENGTH_SHORT).show();
+            wrongSound.start();
+
         }
 
         // Do next question

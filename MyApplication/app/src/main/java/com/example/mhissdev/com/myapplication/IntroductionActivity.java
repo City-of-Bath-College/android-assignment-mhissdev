@@ -1,6 +1,7 @@
 package com.example.mhissdev.com.myapplication;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -44,6 +45,7 @@ public class IntroductionActivity extends AppCompatActivity {
         btnAbout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 // Code goes here
                 Log.d("MHISSDEBUG", "BUTTON About");
                 Intent  i = new Intent(IntroductionActivity.this, ProfileActivity.class);
