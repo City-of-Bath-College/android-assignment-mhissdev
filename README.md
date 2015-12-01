@@ -11,4 +11,5 @@ An Android application to test students’ knowledge of geography.
 * Fallback questions should call to Parse API fail
 * Profile card
 * High score table with clear facility
+* Sounds
 
