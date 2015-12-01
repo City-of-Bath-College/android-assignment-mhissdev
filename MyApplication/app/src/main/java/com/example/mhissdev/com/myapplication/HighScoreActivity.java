@@ -1,6 +1,7 @@
 package com.example.mhissdev.com.myapplication;
 
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -26,6 +27,7 @@ public class HighScoreActivity extends AppCompatActivity {
     private List<HighScoreObject> highScores;
     private Button btnReset;
     private TextView lblNoScores;
+    private MediaPlayer buttonSound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +42,19 @@ public class HighScoreActivity extends AppCompatActivity {
         Paper.init(this);
         displayScores();
 
+        // Setup button sound
+        buttonSound = MediaPlayer.create(HighScoreActivity.this, R.raw.hit );
+
         // Reset button
         btnReset = (Button)findViewById(R.id.btnReset);
 
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                // Play sound
+                buttonSound.start();
+
                 // Reset High scores
                 Paper.book().delete("highscores");
 

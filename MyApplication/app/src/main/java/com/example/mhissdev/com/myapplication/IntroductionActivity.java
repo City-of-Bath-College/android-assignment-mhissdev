@@ -24,6 +24,7 @@ public class IntroductionActivity extends AppCompatActivity {
     private Button btnHighScoreTable;
     private TextView lblHighScore;
     private int highScore;
+    private MediaPlayer buttonSound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,9 @@ public class IntroductionActivity extends AppCompatActivity {
         // Initiate Paper
         Paper.init(this);
 
+        // Init button sound
+        buttonSound = MediaPlayer.create(IntroductionActivity.this, R.raw.hit );
+
         /* Add listener for false button */
         btnAbout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +52,7 @@ public class IntroductionActivity extends AppCompatActivity {
 
                 // Code goes here
                 Log.d("MHISSDEBUG", "BUTTON About");
+                buttonSound.start();
                 Intent  i = new Intent(IntroductionActivity.this, ProfileActivity.class);
                 startActivity(i);
             }
@@ -59,6 +64,7 @@ public class IntroductionActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Code goes here
                 Log.d("MHISSDEBUG", "BUTTON PLAY");
+                buttonSound.start();
                 Intent  i = new Intent(IntroductionActivity.this, MainActivity.class);
                 startActivity(i);
             }
@@ -70,6 +76,7 @@ public class IntroductionActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Code goes here
                 Log.d("MHISSDEBUG", "BUTTON Highscore");
+                buttonSound.start();
                 Intent  i = new Intent(IntroductionActivity.this, HighScoreActivity.class);
                 startActivity(i);
             }

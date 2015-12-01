@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String IMAGE_ROOT_URL = "http://kvsk.org/dev/quiz/images/";
     private MediaPlayer correctSound;
     private MediaPlayer wrongSound;
+    private boolean loadQuestionsFailed;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         score = 0;
         numQuestions = 0;
         currentQuestion = 0;
+        loadQuestionsFailed = true;
 
         // Init question array list
         questions = new ArrayList<QuestionObject>();
@@ -141,6 +143,15 @@ public class MainActivity extends AppCompatActivity {
 
                     Log.d("MHISSDEV", "DATA LOADED OK!");
                     int len = objects.size();
+
+                    // Make sure length is not zero as sometime error is not detected
+                    if(len ==0 ){
+                        loadFallbackQuestions();
+                    }
+                    else{
+                        // Lets assume questions loaded OK
+                        loadQuestionsFailed = false;
+                    }
 
                     // Add each object to questions
                     for(int i=0; i<len; i++)
@@ -249,6 +260,8 @@ public class MainActivity extends AppCompatActivity {
                 false,
                 "http://www.telegraph.co.uk/incoming/article115762.ece/ALTERNATES/w460/tokyo.jpg"
         ));
+
+        Log.d("MHISSDEV", "Fallback Qeustions Loaded");
     }
 
     /* Setup questions array */
@@ -280,12 +293,21 @@ public class MainActivity extends AppCompatActivity {
             lblQuestionNumber.setText("Question " + (currentQuestion + 1));
 
             // Set Image
-            String imageURL = IMAGE_ROOT_URL + questions.get(currentQuestion).getImageURL();
+            String imageURL;
+
+            if(loadQuestionsFailed == true){
+                // Using hardcoded URLs for images
+                imageURL = questions.get(currentQuestion).getImageURL();
+            }
+            else{
+                // Use root URL
+                imageURL = IMAGE_ROOT_URL + questions.get(currentQuestion).getImageURL();
+            }
 
             // Load Image
             Picasso.with(this)
                     .load(imageURL)
-                    .placeholder(R.drawable.question)
+                    .placeholder(R.drawable.loading)
                     .error(R.drawable.question)
                     .into(imgPicture);
 
