@@ -361,6 +361,7 @@ public class MainActivity extends AppCompatActivity {
         // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
         input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
         builder.setView(input);
+        builder.setCancelable(false);
 
         // Set up the buttons
         // Ok button
@@ -389,20 +390,17 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public int compare(HighScoreObject lhs, HighScoreObject rhs) {
                         // First compare scores
-                        if(lhs.score > rhs.score){
+                        if (lhs.score > rhs.score) {
                             return 1;
-                        }
-                        else if(lhs.score < rhs.score){
+                        } else if (lhs.score < rhs.score) {
                             return -1;
                         }
                         // Scores must be equal if we get here, lets compare timestamp
-                        else if(lhs.timestamp > rhs.timestamp){
+                        else if (lhs.timestamp > rhs.timestamp) {
                             return 1;
-                        }
-                        else if(lhs.timestamp < rhs.timestamp){
+                        } else if (lhs.timestamp < rhs.timestamp) {
                             return -1;
-                        }
-                        else{
+                        } else {
                             // Scores and timestamp eaqual
                             return 0;
                         }
