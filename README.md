@@ -1,7 +1,7 @@
 # android-assignment-mhissdev
 android-assignment-mhissdev created by Classroom for GitHub
 
-An Android application to test student's knowledge of geography.
+An Android application to test students’ knowledge of geography.
 
 ##Features:
 
